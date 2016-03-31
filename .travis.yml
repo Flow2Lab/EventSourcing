@@ -1,0 +1,23 @@
+language: php
+php:
+  - 5.6
+  - 7.0
+matrix:
+  allow_failures:
+    - php: hhvm
+
+before_install:
+  - cd ..
+  - git clone https://github.com/neos/flow-base-distribution.git
+  - cd flow-base-distribution
+  - git checkout 3.1
+  - composer update
+  - composer require codeclimate/php-test-reporter:dev-master --dev
+install:
+  - mkdir -p Packages/Application/Flow2Lab.EventSourcing
+  - mv ../EventSourcing/* Packages/Application/Flow2Lab.EventSourcing
+script:
+  - bin/phpunit -c Packages/Application/Flow2Lab.EventSourcing/UnitTests.xml --coverage-clover build/logs/clover.xml
+  - bin/phpunit --stop-on-failure -c Packages/Application/Flow2Lab.EventSourcing/UnitTests.xml --testsuite "Flow2Lab.EventSourcing tests"
+  - cd Packages/Application/Flow2Lab.EventSourcing
+  - ../../../bin/test-reporter
