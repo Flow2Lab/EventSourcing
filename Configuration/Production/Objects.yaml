@@ -1,2 +1,2 @@
-Etg24\EventSourcing\Queue\QueueInterface:
-  className: 'Etg24\EventSourcing\Queue\ImmediateQueue'
+Flow2Lab\EventSourcing\Queue\QueueInterface:
+  className: 'Flow2Lab\EventSourcing\Queue\ImmediateQueue'

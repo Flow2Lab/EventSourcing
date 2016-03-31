@@ -1,4 +1,4 @@
-Etg24\EventSourcing\Auditing\LoggerInterface:
+Flow2Lab\EventSourcing\Auditing\LoggerInterface:
   scope: singleton
   factoryObjectName: TYPO3\Flow\Log\LoggerFactory
   factoryMethodName: create

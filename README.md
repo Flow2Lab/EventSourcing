@@ -17,13 +17,13 @@ Commands define the interface to your domain model. They enter the *[command bus
 
 ### Defining commands
 
-You can define a command by extending from `Etg24\EventSourcing\Command\Command` (I will soonish update the code base to use the `CommandInterface` instead, but until then you need to inherit from `Command`). The command has a `commandId` that can be used for logging purposes, if so desired.
+You can define a command by extending from `Flow2Lab\EventSourcing\Command\Command` (I will soonish update the code base to use the `CommandInterface` instead, but until then you need to inherit from `Command`). The command has a `commandId` that can be used for logging purposes, if so desired.
 
 ```php
 <?php
 namespace Vendor\Foo\Command;
 
-use Etg24\EventSourcing\Command\Command;
+use Flow2Lab\EventSourcing\Command\Command;
 
 /**
  * Any doc comment will be part of the CLI documentation!
@@ -61,7 +61,7 @@ class AddInventoryItemToBasket extends Command {
 
 Command handlers execute commands coming from the command bus. They are part of your application layer and only orchestrate the domain model. Their job is to resolve dependencies and pass them to the domain model.
 
-You can define a command handler by implementing the interface `Etg24\EventSourcing\Command\Handler\CommandHandlerInterface`. Alternatively, you can extend the `Etg24\EventSourcing\Command\CommandHandler` that will provide a default implementation for normal handlers.
+You can define a command handler by implementing the interface `Flow2Lab\EventSourcing\Command\Handler\CommandHandlerInterface`. Alternatively, you can extend the `Flow2Lab\EventSourcing\Command\CommandHandler` that will provide a default implementation for normal handlers.
 
 The command handler provided by Etg24.EventSourcing has a naming convention for handler methods: `handle<CommandName>Command`. The command name is the simple class name. To avoid conflicts, it is furthermore necessary that the namespace for the command handler is `CommandHandler` and `Command` for the commands. See the example folder structure and implementation below.
 
@@ -82,7 +82,7 @@ namespace Vendor\Foo\CommandHandler;
 
 use Vendor\Foo\Command\AddInventoryItemToBasket;
 use Vendor\Foo\Domain\Repository\BasketRepository;
-use Etg24\EventSourcing\Command\CommandHandler;
+use Flow2Lab\EventSourcing\Command\CommandHandler;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
@@ -187,13 +187,13 @@ Domain events are created by [aggregates](#aggregates), retrieved by [repositori
 
 ### Defining events
 
-An event is defined by extending from `Etg24\EventSourcing\Event\DomainEvent`. Please note that the constructor of the parent class must be called in order to generate the date when the event occurred (I'm still debating over doing this with e. g. AOP).
+An event is defined by extending from `Flow2Lab\EventSourcing\Event\DomainEvent`. Please note that the constructor of the parent class must be called in order to generate the date when the event occurred (I'm still debating over doing this with e. g. AOP).
 
 ```php
 <?php
 namespace Vendor\Foo\Domain\Event;
 
-use Etg24\EventSourcing\Event\DomainEvent;
+use Flow2Lab\EventSourcing\Event\DomainEvent;
 
 class InventoryItemToBaskedAdded extends DomainEvent {
     
@@ -229,7 +229,7 @@ Repositories are used to save and retrieve aggregates. The naming convention fro
 ```php
 namespace Vendor\Foo\Domain\Repository;
 
-use Etg24\EventSourcing\Store\Repository;
+use Flow2Lab\EventSourcing\Store\Repository;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
@@ -282,7 +282,7 @@ class InformingCustomerAboutAddedInventoryItemService extends AbstractEventHandl
 
 ## Aggregates<a name="aggregates"></a>
 
-In event sourced environments, aggregates are reconstructed using domain events only! You can create an aggregate class by implementing `Etg24\EventSourcing\AggregateRootInterface`. The trait `Etg24\EventSourcing\AggregateSourcing` contains behaviour that will satisfy the interface and provides a sane default implementation for your aggregates.
+In event sourced environments, aggregates are reconstructed using domain events only! You can create an aggregate class by implementing `Flow2Lab\EventSourcing\AggregateRootInterface`. The trait `Flow2Lab\EventSourcing\AggregateSourcing` contains behaviour that will satisfy the interface and provides a sane default implementation for your aggregates.
 
 ### Instantiation
 
@@ -394,7 +394,7 @@ class Basket implements AggregateRootInterface {
 
 Entities are very similar to aggregates (technically), however they are maintained and owned by an aggregate. The lifecycle of entities is the responsibility of the aggregate and you must only ever access entities through the aggregate.
 
-Entities must implement the `Etg24\EventSourcing\EntityInterface`, the trait `Etg24\EventSourcing\EntitySourcing` provides behaviour.
+Entities must implement the `Flow2Lab\EventSourcing\EntityInterface`, the trait `Flow2Lab\EventSourcing\EntitySourcing` provides behaviour.
 
 When creating an entity, you must register the entity with the aggregate:
 
