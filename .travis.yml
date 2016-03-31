@@ -6,6 +6,10 @@ matrix:
   allow_failures:
     - php: hhvm
 
+addons:
+  code_climate:
+    repo_token: 2a5b122f70d39aea86d7dc47eaad204cc286e36e1fbfacee902397724d27fd1a
+
 before_install:
   - cd ..
   - git clone https://github.com/neos/flow-base-distribution.git
