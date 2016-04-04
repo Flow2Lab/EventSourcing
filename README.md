@@ -1,6 +1,7 @@
 # Flow2Lab.EventSourcing [![Build Status](https://travis-ci.org/Flow2Lab/EventSourcing.svg?branch=master)](https://travis-ci.org/Flow2Lab/EventSourcing)
 
 [![Code Climate](https://codeclimate.com/github/Flow2Lab/EventSourcing/badges/gpa.svg)](https://codeclimate.com/github/Flow2Lab/EventSourcing) [![Test Coverage](https://codeclimate.com/github/Flow2Lab/EventSourcing/badges/coverage.svg)](https://codeclimate.com/github/Flow2Lab/EventSourcing/coverage) [![Issue Count](https://codeclimate.com/github/Flow2Lab/EventSourcing/badges/issue_count.svg)](https://codeclimate.com/github/Flow2Lab/EventSourcing)
+[![Latest Stable Version](https://poser.pugx.org/flow2lab/eventsourcing/v/stable)](https://packagist.org/packages/flow2lab/eventsourcing) [![Total Downloads](https://poser.pugx.org/flow2lab/eventsourcing/downloads)](https://packagist.org/packages/flow2lab/eventsourcing) [![Latest Unstable Version](https://poser.pugx.org/flow2lab/eventsourcing/v/unstable)](https://packagist.org/packages/flow2lab/eventsourcing) [![License](https://poser.pugx.org/flow2lab/eventsourcing/license)](https://packagist.org/packages/flow2lab/eventsourcing)
 
 This package provides basic CQRS/ES infrastructure for [TYPO3 Flow](http://flow.typo3.org).
 
