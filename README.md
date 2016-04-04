@@ -9,7 +9,7 @@ Its purpose is to provide inspiration for writing your own customized set of too
 ## Installation
 
 ```
-$ composer require etg24/eventsourcing dev-master
+$ composer require flow2lab/eventsourcing dev-master
 ```
 
 ## Commands<a name="commands"></a>
@@ -64,7 +64,7 @@ Command handlers execute commands coming from the command bus. They are part of 
 
 You can define a command handler by implementing the interface `Flow2Lab\EventSourcing\Command\Handler\CommandHandlerInterface`. Alternatively, you can extend the `Flow2Lab\EventSourcing\Command\CommandHandler` that will provide a default implementation for normal handlers.
 
-The command handler provided by Etg24.EventSourcing has a naming convention for handler methods: `handle<CommandName>Command`. The command name is the simple class name. To avoid conflicts, it is furthermore necessary that the namespace for the command handler is `CommandHandler` and `Command` for the commands. See the example folder structure and implementation below.
+The command handler provided by flow2lab.EventSourcing has a naming convention for handler methods: `handle<CommandName>Command`. The command name is the simple class name. To avoid conflicts, it is furthermore necessary that the namespace for the command handler is `CommandHandler` and `Command` for the commands. See the example folder structure and implementation below.
 
 ```
 - Vendor
@@ -164,7 +164,7 @@ to view the required parameters for any given command and execute them.
 To disable command CLI access, edit the `Settings.yaml` of your project like this:
 
 ```yaml
-Etg24:
+flow2lab:
   EventSourcing:
     Command:
       Controller:
@@ -174,7 +174,7 @@ Etg24:
 Alternatively, you can *hide* the commands from normal CLI users by marking them as internal. That way the commands are still accessible but no longer printed by `./flow help`.
 
 ```yaml
-Etg24:
+flow2lab:
   EventSourcing:
     Command:
       Controller:
@@ -470,4 +470,4 @@ todo: write about how event sourced models are tested (hint: it's not by using g
 
 ## License
 
-Etg24.EventSourcing is released under the [MIT license](http://www.opensource.org/licenses/MIT).
+Flow2Lab.EventSourcing is released under the [MIT license](http://www.opensource.org/licenses/MIT).
